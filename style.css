@@ -659,56 +659,58 @@ body {
  color:white;
  cursor:pointer;
 }
-/* =========================
-   MOBILE RESPONSIVE FIX
-   ========================= */
+/* ================= MOBILE FIX ================= */
 
+html, body {
+    overflow-x: hidden;
+}
+
+/* Images responsive */
 img {
     max-width: 100%;
     height: auto;
-    display: block;
 }
 
-/* Movie container */
-.movie-container,
-.card,
-.movie-card {
-    width: 100%;
-}
-
-/* Fix image overflow */
-.movie-card img,
-.card img {
+/* Fix slider image */
+.carousel-item img {
     width: 100%;
     height: auto;
     object-fit: cover;
 }
 
-/* Bootstrap columns mobile fix */
+/* Sidebar mobile */
 @media (max-width: 768px) {
 
-    .row {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
-
-    .col,
-    .col-md-3,
-    .col-md-4,
-    .col-lg-3 {
-        width: 100% !important;
-        flex: 0 0 100% !important;
-        max-width: 100% !important;
-    }
-
-    /* Fix carousel image (if using slider) */
-    .carousel-item img {
-        width: 100%;
-        height: auto;
-    }
-
-    /* Sidebar mobile */
+    /* sidebar width */
     #sidebar {
-        width: 80%;
+        width: 75%;
+        max-width: 300px;
     }
+
+    /* prevent content shift */
+    body.sidebar-open {
+        overflow: hidden;
+    }
+
+    /* Fix movie cards */
+    .movie-card,
+    .card {
+        width: 100% !important;
+    }
+
+    /* Bootstrap columns full width */
+    .col-md-3,
+    .col-lg-3,
+    .col-md-4 {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 0 0 100%;
+    }
+
+    /* Fix arrows covering image */
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 10%;
+    }
+
 }
