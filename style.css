@@ -660,53 +660,103 @@ body {
  cursor:pointer;
 }
 
-/* ================= MOBILE ONLY FIX ================= */
+/* ================= GLOBAL FIX ================= */
 
-@media (max-width:768px){
-
-/* prevent screen cutting */
-html, body{
-    overflow-x:hidden;
+html, body {
+    overflow-x: hidden;
 }
 
-/* navbar full width */
-.navbar,
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ================= NAVBAR FIX ================= */
+
+.navbar {
+    width: 100%;
+}
+
+/* ================= SIDEBAR (keep working) ================= */
+
+#sidebar {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
+    background: #fff;
+    z-index: 9999;
+    transition: left 0.3s ease;
+}
+
+#sidebar.active {
+    left: 0;
+}
+
+/* ================= CAROUSEL (NO DESIGN CHANGE) ================= */
+
+.carousel {
+    width: 100%;
+}
+
+.carousel-inner {
+    width: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+}
+
+/* ================= MOVIE CARDS ================= */
+
+.movie-card,
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+
+/* FULL WIDTH CONTAINER */
 .container,
-.container-fluid{
-    width:100%;
-    padding-left:10px;
-    padding-right:10px;
+.container-fluid {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
 }
 
-/* KEEP carousel design SAME — only resize */
-.carousel{
-    width:100%;
-    overflow:hidden;
+/* NAVBAR FULL WIDTH */
+.navbar {
+    width: 100% !important;
 }
 
-.carousel-inner{
-    width:100%;
+/* FIX GRID FOR MOVIES */
+.row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
 }
 
-.carousel-item img{
-    max-width:100%;
-    height:auto;   /* IMPORTANT — prevents zoom/cut */
-}
-
-/* movie images fix */
-.card img,
-.movie-card img{
-    width:100%;
-    height:auto;
-}
-
-/* bootstrap columns stack mobile */
 .col-md-3,
 .col-md-4,
 .col-lg-3,
-.col-lg-4{
-    flex:0 0 100%;
-    max-width:100%;
+.col-lg-4 {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+}
+
+/* MOVIE CARD FULL WIDTH */
+.movie-card,
+.card {
+    width: 100% !important;
+    margin-bottom: 15px;
 }
 
 }
