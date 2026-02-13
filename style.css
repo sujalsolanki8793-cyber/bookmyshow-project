@@ -659,68 +659,54 @@ body {
  color:white;
  cursor:pointer;
 }
-/* ================= FULL MOBILE RESPONSIVE FIX ================= */
 
-/* prevent horizontal scroll */
-html,body{
-    overflow-x:hidden;
-}
-
-/* images always responsive */
-img{
-    max-width:100%;
-    height:auto;
-}
-
-/* carousel fix */
-.carousel-item img{
-    width:100%;
-    height:auto;
-    object-fit:cover;
-}
-
-/* ===== SIDEBAR ===== */
-
-#sidebar{
-    position:fixed;
-    top:0;
-    left:-100%;      /* HIDDEN by default */
-    width:280px;
-    height:100vh;
-    background:#fff;
-    z-index:9999;
-    transition:left 0.3s ease;
-}
-
-#sidebar.active{
-    left:0;
-}
-
-
-/* ===== MOBILE FIX ===== */
+/* ================= MOBILE ONLY FIX ================= */
 
 @media (max-width:768px){
 
-    /* bootstrap columns full width */
-    .col-md-3,
-    .col-lg-3,
-    .col-md-4,
-    .col-lg-4{
-        width:100% !important;
-        max-width:100% !important;
-        flex:0 0 100%;
-    }
+/* prevent screen cutting */
+html, body{
+    overflow-x:hidden;
+}
 
-    /* movie cards */
-    .card,
-    .movie-card{
-        width:100% !important;
-    }
+/* navbar full width */
+.navbar,
+.container,
+.container-fluid{
+    width:100%;
+    padding-left:10px;
+    padding-right:10px;
+}
 
-    /* carousel arrows small */
-    .carousel-control-prev,
-    .carousel-control-next{
-        width:12%;
-    }
+/* KEEP carousel design SAME — only resize */
+.carousel{
+    width:100%;
+    overflow:hidden;
+}
+
+.carousel-inner{
+    width:100%;
+}
+
+.carousel-item img{
+    max-width:100%;
+    height:auto;   /* IMPORTANT — prevents zoom/cut */
+}
+
+/* movie images fix */
+.card img,
+.movie-card img{
+    width:100%;
+    height:auto;
+}
+
+/* bootstrap columns stack mobile */
+.col-md-3,
+.col-md-4,
+.col-lg-3,
+.col-lg-4{
+    flex:0 0 100%;
+    max-width:100%;
+}
 
 }
