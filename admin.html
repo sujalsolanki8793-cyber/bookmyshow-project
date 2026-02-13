@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel - BookMyShow</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Admin CSS -->
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>BookMyShow Admin</h2>
+    <a href="#manageMovieSection">Manage Movies</a>
+    <a href="#movieListSection">Movie List</a>
+    <a href="#usersSection">All Users</a>
+    <a href="index.html">Go to Home</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main-content">
+
+    <!-- Manage Movie Section -->
+    <section id="manageMovieSection" class="card-section">
+      <div class="card">
+        <h5>Manage Movie</h5>
+        <input id="movieTitleInput" class="form-control mb-2" placeholder="Movie Title">
+        <input id="movieGenreInput" class="form-control mb-2" placeholder="Genre (use '-' for multiple)">
+        <input id="movieLanguageInput" class="form-control mb-2" placeholder="Language">
+        <input id="moviePriceInput" class="form-control mb-2" placeholder="Price" type="number">
+        <input id="movieTimesInput" class="form-control mb-2" placeholder="Show Times (comma separated)">
+        <input id="movieImageInput" class="form-control mb-2" placeholder="Image URL">
+        <input id="movieTrailerInput" class="form-control mb-2" placeholder="Trailer URL">
+        <input id="movieCastInput" class="form-control mb-2" placeholder="Cast">
+        <input id="movieRatingInput" class="form-control mb-2" placeholder="Rating">
+        <textarea id="movieSynopsisInput" class="form-control mb-2" placeholder="Synopsis"></textarea>
+        <select id="movieTypeSelect" class="form-control mb-2">
+          <option value="Current">Current Movie</option>
+          <option value="Upcoming">Upcoming Movie</option>
+        </select>
+        <button id="saveBtn" class="btn btn-accent w-100">Save Movie</button>
+      </div>
+    </section>
+
+    <!-- Movie List Section -->
+    <section id="movieListSection" class="card-section">
+      <div class="card">
+        <h5>Movie List</h5>
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Genre</th>
+              <th>Language</th>
+              <th>Price</th>
+              <th>Type</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="moviesTableBody"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Users Section -->
+    <section id="usersSection" class="card-section">
+      <div class="card">
+        <h5>All Users</h5>
+        <input type="text" id="userSearchInput" class="form-control mb-2" placeholder="Search by email...">
+        <table class="table table-dark table-striped">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Favorites</th>
+              <th>Booking History</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="adminUsersContainer"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Side Edit Panel -->
+  <div id="editPanel" class="edit-panel">
+    <div class="panel-header">
+      <h5>Edit Movie</h5>
+      <button id="closeEditPanel" class="btn btn-sm btn-danger">X</button>
+    </div>
+    <div class="panel-body">
+      <input id="editMovieTitleInput" class="form-control mb-2" placeholder="Movie Title">
+      <input id="editMovieGenreInput" class="form-control mb-2" placeholder="Genre">
+      <input id="editMovieLanguageInput" class="form-control mb-2" placeholder="Language">
+      <input id="editMoviePriceInput" class="form-control mb-2" placeholder="Price" type="number">
+      <input id="editMovieTimesInput" class="form-control mb-2" placeholder="Show Times (comma separated)">
+      <input id="editMovieImageInput" class="form-control mb-2" placeholder="Image URL">
+      <input id="editMovieTrailerInput" class="form-control mb-2" placeholder="Trailer URL">
+      <input id="editMovieCastInput" class="form-control mb-2" placeholder="Cast">
+      <input id="editMovieRatingInput" class="form-control mb-2" placeholder="Rating">
+      <textarea id="editMovieSynopsisInput" class="form-control mb-2" placeholder="Synopsis"></textarea>
+      <select id="editMovieTypeSelect" class="form-control mb-2">
+        <option value="Current">Current Movie</option>
+        <option value="Upcoming">Upcoming Movie</option>
+      </select>
+      <button id="updateMovieBtn" class="btn btn-accent w-100">Update Movie</button>
+    </div>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BookMyShow</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- CITY MODAL -->
+<div id="cityModal" class="modal-box">
+    <h4>Select City</h4>
+    <select id="citySelect" class="form-select mb-3">
+        <option value="">Choose City</option>
+        <option>Ahmedabad</option>
+        <option>Mumbai</option>
+        <option>Delhi</option>
+    </select>
+    <button class="btn btn-danger w-100" onclick="selectCity()">Continue</button>
+</div>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal" class="modal-box">
+    <h4>Login</h4>
+    <input id="loginName" class="form-control mb-2" placeholder="Name">
+    <input id="loginEmail" class="form-control mb-2" placeholder="Email">
+    <button class="btn btn-success w-100" onclick="doLogin()">Login</button>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar-custom">
+    <div id="hamburger" class="hamburger d-none" onclick="openSidebar()">
+        <span></span><span></span><span></span>
+    </div>
+    <span class="brand">🎬 BookMyShow</span>
+    <input id="searchInput" class="search" placeholder="Search movies" onkeyup="searchMovie()">
+    <span id="welcomeText"></span>
+    <button id="loginBtn" class="btn btn-success" onclick="openLogin()">Login</button>
+    <button id="logoutBtn" class="btn btn-danger d-none" onclick="logout()">Logout</button>
+</nav>
+
+<div class="container my-5">
+
+  <!-- MOVIE CAROUSEL -->
+  <div id="movieCarousel" class="carousel slide">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="image-box">
+              <img src="border2.png" alt="Movie 1">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h2>Border 2</h2>
+            <p class="text-muted">Action • Drama • Hindi</p>
+            <p>Based on the bravery and sacrifice of Indian soldiers.</p>
+            <button class="btn btn-danger">Hury up!!</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="carousel-item">
+        <div class="row align-items-center">
+          <div class="col-md-6">
+            <div class="image-box">
+              <img src="avtar.png" alt="Movie 2">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h2>Avatar: Fire & Ash</h2>
+            <p class="text-muted">Fantasy • English</p>
+            <p>The next epic chapter in the Avatar universe.</p>
+            <button class="btn btn-danger">Hury up!!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARROWS -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#movieCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#movieCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</div>
+
+<!-- UPCOMING MOVIES -->
+<div class="upcoming-wrapper mt-3">
+    <div class="upcoming-header d-flex justify-content-between align-items-center upcoming-btn" onclick="showOnlyUpcoming()">
+        <h5>Coming Soon</h5>
+        <a href="javascript:void(0)" class="explore-link">Explore Upcoming Movies &rarr;</a>
+    </div>
+</div>
+
+<!-- HOME BUTTON -->
+<div class="text-center mt-2" id="homeBtnContainer" style="display:none;">
+    <button class="btn btn-secondary" onclick="showHomeMovies()">Home</button>
+</div>
+
+<!-- FILTERS -->
+<div id="filtersContainer" class="filters mt-3"></div>
+
+<!-- MOVIES -->
+<div class="container mt-4">
+    <div id="moviesContainer" class="row g-4"></div>
+</div>
+
+<div class="text-center mt-3 d-flex justify-content-center">
+    <button id="seeMoreBtn" class="btn btn-secondary" onclick="seeMore()">See More</button>
+</div>
+
+<!-- ================= BOOKING MODAL ================= -->
+<div id="bookingModal" class="booking-modal">
+  <div class="booking-card">
+
+    <!-- HEADER -->
+    <div class="booking-header">
+      <img id="bookingPoster">
+      <div>
+        <h4 id="movieTitle"></h4>
+        <p class="text-muted mb-1">Select Date & Show Time</p>
+      </div>
+      <span class="close-btn" onclick="closeBooking()">✕</span>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-7">
+        <!-- DATE -->
+        <select id="bookingDate" class="form-select mb-3"></select>
+
+        <!-- SHOW TIMES -->
+        <div id="showTimes" class="showtime-row"></div>
+
+        <!-- SCREEN -->
+        <div class="screen">SCREEN</div>
+
+        <!-- SEATS -->
+        <div id="seatContainer" class="seat-container"></div>
+      </div>
+
+      <div class="col-md-5">
+        <h6 class="mt-3">Payment Method</h6>
+        <select id="paymentMethod" class="form-select mb-2" onchange="handlePaymentChange()">
+          <option value="">Select</option>
+          <option value="card">Card</option>
+          <option value="upi">UPI</option>
+        </select>
+
+       <div id="cardDetails" class="payment-box">
+         <input id="cardNumber" class="form-control mb-2" placeholder="Card Number">
+         <div class="d-flex gap-2">
+         <input id="cardExpiry" class="form-control" placeholder="MM/YY">
+         <input id="cardCvv" class="form-control" placeholder="CVV">
+        </div>
+      </div>
+
+       <div id="upiDetails" class="payment-box">
+         <input id="upiId" class="form-control mb-2" placeholder="UPI ID">
+         <input id="upiMobile" class="form-control" placeholder="Mobile Number">
+       </div>
+
+
+        <div class="price-box">
+          <span>Total</span>
+          <strong>₹<span id="totalPrice">0</span></strong>
+        </div>
+
+        <button id="payBtn" onclick="confirmBooking()" disabled>Pay & Book Tickets</button>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MOVIE DETAILS MODAL -->
+<div id="movieDetailsModal" class="booking-modal">
+  <div class="booking-card" style="max-width:800px;">
+    <span class="close-btn" onclick="closeMovieDetails()">✕</span>
+    <div class="row g-3 align-items-center">
+      <div class="col-md-4">
+        <img id="detailsPoster" style="width:100%;border-radius:12px; display:none;">
+      </div>
+      <div class="col-md-8">
+        <h2 id="detailsTitle"></h2>
+        <p id="detailsGenre" class="text-muted"></p>
+        <p id="detailsSynopsis"></p>
+        <p><strong>Cast:</strong> <span id="detailsCast"></span></p>
+        <p><strong>Rating:</strong> <span id="detailsRating"></span> ⭐</p>
+        <div class="d-flex gap-2 mt-2">
+          <button class="btn btn-primary flex-fill" onclick="playTrailer()">Watch Trailer</button>
+          <button class="btn btn-danger flex-fill" onclick="openBooking(selectedMovie.id)">Book Now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- PROFILE MODAL -->
+<div id="profileModal" class="modal-box">
+  <h4>Profile</h4>
+  <input id="profileName" class="form-control mb-2">
+  <input id="profileEmail" class="form-control mb-2">
+  <button class="btn btn-success w-100" onclick="updateProfile()">Update</button>
+</div>
+<!-- ===== ULTRA REAL TICKET ===== -->
+
+<div id="ticketOverlay"></div>
+
+<div id="ticketContainer"></div>
+
+
+
+
+<!-- SIDEBAR -->
+<div id="sidebar">
+
+    <h5 id="userNameText" class="username"></h5>
+
+    <!-- Favourite Section -->
+    <div class="sidebar-section">
+
+        <div class="section-header" onclick="toggleSection('favContent')">
+            ❤️ Favourite Movies
+            <span class="arrow">▼</span>
+        </div>
+
+        <div id="favContent" class="section-content">
+            <ul id="favList"></ul>
+        </div>
+
+    </div>
+
+    <!-- Booking Section -->
+    <div class="sidebar-section">
+
+        <div class="section-header" onclick="toggleSection('historyContent')">
+            🎟 Booking History
+            <span class="arrow">▼</span>
+        </div>
+
+        <div id="historyContent" class="section-content">
+            <ul id="historyList"></ul>
+        </div>
+
+    </div>
+
+    <button class="btn btn-danger w-100 mt-3" onclick="closeSidebar()">Close</button>
+
+</div>
+
+<!-- STEP 4: Loader -->
+<!--<div id="loader">Processing...</div> -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
