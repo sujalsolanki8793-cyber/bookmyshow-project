@@ -703,3 +703,30 @@ function editMovie(id){
     saveBtn.onclick = addMovie;
   };
 }
+
+
+function fixMobileLayout() {
+
+    // Navbar full width
+    const navbar = document.querySelector(".navbar");
+    if (navbar) {
+        navbar.style.width = "100%";
+    }
+
+    // Movies grid mobile fix
+    if (window.innerWidth <= 768) {
+
+        document.querySelectorAll(".movie-col").forEach(col => {
+            col.style.flex = "0 0 100%";
+            col.style.maxWidth = "100%";
+        });
+
+    } else {
+
+        document.querySelectorAll(".movie-col").forEach(col => {
+            col.style.flex = "";
+            col.style.maxWidth = "";
+        });
+
+    }
+}
