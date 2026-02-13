@@ -659,49 +659,56 @@ body {
  color:white;
  cursor:pointer;
 }
-/* ================= SAFE MOBILE RESPONSIVE FIX ================= */
+/* =========================
+   MOBILE RESPONSIVE FIX
+   ========================= */
 
-@media (max-width:768px){
-
-/* Prevent horizontal scroll */
-html, body{
-    width:100%;
-    overflow-x:hidden;
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
-/* Bootstrap row fix */
-.row{
-    margin-left:0 !important;
-    margin-right:0 !important;
+/* Movie container */
+.movie-container,
+.card,
+.movie-card {
+    width: 100%;
 }
 
-/* Images always visible */
-img{
-    width:100%;
-    height:auto;
-    display:block;
+/* Fix image overflow */
+.movie-card img,
+.card img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
-/* Carousel image container */
-.image-box img{
-    max-height:280px;
-    object-fit:cover;
-}
+/* Bootstrap columns mobile fix */
+@media (max-width: 768px) {
 
-/* Movie cards responsive (NO layout change) */
-.movie-card{
-    width:100%;
-}
+    .row {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
 
-/* Booking modal mobile fit */
-.booking-card{
-    width:95%;
-    margin:auto;
-}
+    .col,
+    .col-md-3,
+    .col-md-4,
+    .col-lg-3 {
+        width: 100% !important;
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+    }
 
-/* Sidebar mobile full screen */
-#sidebar{
-    width:100%;
-}
+    /* Fix carousel image (if using slider) */
+    .carousel-item img {
+        width: 100%;
+        height: auto;
+    }
 
+    /* Sidebar mobile */
+    #sidebar {
+        width: 80%;
+    }
 }
