@@ -659,3 +659,59 @@ body {
  color:white;
  cursor:pointer;
 }
+/* ================= MOBILE FIX (USER SIDE) ================= */
+
+@media (max-width:768px){
+
+/* Prevent horizontal scroll */
+body{
+    overflow-x:hidden;
+}
+
+/* Container spacing */
+.container{
+    padding-left:10px;
+    padding-right:10px;
+}
+
+/* Images responsive only */
+img,
+.image-box img,
+.movie-card img,
+.carousel img{
+    max-width:100%;
+    height:auto;
+    object-fit:cover;
+}
+
+/* Carousel image height mobile */
+.image-box{
+    max-height:260px;
+    overflow:hidden;
+}
+
+/* Booking modal fit screen */
+.booking-card{
+    width:95%;
+    max-height:90vh;
+    overflow-y:auto;
+}
+
+/* Seat size small for mobile */
+.seat{
+    width:24px;
+    height:24px;
+    font-size:12px;
+}
+
+/* Sidebar full width mobile */
+#sidebar{
+    width:100%;
+}
+
+/* Buttons prevent overflow */
+button{
+    max-width:100%;
+}
+
+}

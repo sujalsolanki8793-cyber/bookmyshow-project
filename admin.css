@@ -137,3 +137,48 @@ textarea.form-control {
         width: 100%;
     }
 }
+
+/* ================= MOBILE FIX (ADMIN SIDE) ================= */
+
+@media (max-width:768px){
+
+/* Prevent overflow */
+body{
+    overflow-x:hidden;
+}
+
+/* Sidebar mobile fit */
+.sidebar{
+    width:100%;
+    position:relative;
+}
+
+/* Main content full width */
+.main-content{
+    margin-left:0;
+    padding:15px;
+}
+
+/* Tables scroll instead of breaking layout */
+table{
+    display:block;
+    overflow-x:auto;
+    white-space:nowrap;
+}
+
+/* Cards responsive */
+.card{
+    padding:15px;
+}
+
+/* Edit panel mobile full screen */
+.edit-panel{
+    width:100%;
+}
+
+img{
+    max-width:100%;
+    height:auto;
+}
+
+}
