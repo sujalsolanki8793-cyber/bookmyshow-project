@@ -559,6 +559,7 @@ body {
   display: none;
 }
 
+
 /* ===== OVERLAY ===== */
 
 #ticketOverlay{
@@ -660,103 +661,156 @@ body {
  cursor:pointer;
 }
 
-/* ================= GLOBAL FIX ================= */
+/* =====================================================
+   FULL MOBILE RESPONSIVE (BOOKMYSHOW STYLE)
+   ADD THIS AT END — DO NOT REMOVE EXISTING CSS
+===================================================== */
 
-html, body {
-    overflow-x: hidden;
+/* ===== MOBILE DEVICES: TABLET & SMALL SCREENS ===== */
+@media (max-width: 768px){
+
+/* ---------- NAVBAR MOBILE ---------- */
+.navbar-custom{
+    flex-wrap:wrap;
+    gap:10px;
+    padding:10px;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+.brand{
+    font-size:18px;
 }
 
-/* ================= NAVBAR FIX ================= */
-
-.navbar {
-    width: 100%;
+.search{
+    width:100%;
+    order:3;
 }
 
-/* ================= SIDEBAR (keep working) ================= */
-
-#sidebar {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 280px;
-    height: 100vh;
-    background: #fff;
-    z-index: 9999;
-    transition: left 0.3s ease;
+/* Hamburger fix */
+.hamburger{
+    display:block;
 }
 
-#sidebar.active {
-    left: 0;
+/* ---------- CAROUSEL ---------- */
+.carousel-img{
+    height:180px;
+    border-radius:10px;
 }
 
-/* ================= CAROUSEL (NO DESIGN CHANGE) ================= */
-
-.carousel {
-    width: 100%;
+/* ---------- MOVIE GRID ---------- */
+.movie-card{
+    margin-bottom:14px;
 }
 
-.carousel-inner {
-    width: 100%;
+.poster-wrapper{
+    height:220px;
 }
 
-.carousel-item img {
-    width: 100%;
-    height: auto;
+/* 2 cards per row */
+.col-md-3{
+    width:50%;
+    padding:5px;
 }
 
-/* ================= MOVIE CARDS ================= */
-
-.movie-card,
-.card {
-    border-radius: 12px;
-    overflow: hidden;
+/* ---------- BUTTONS ---------- */
+.action-row{
+    flex-direction:column;
 }
 
-/* ================= MOBILE RESPONSIVE ================= */
-
-@media (max-width: 768px) {
-
-/* FULL WIDTH CONTAINER */
-.container,
-.container-fluid {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding-left: 12px !important;
-    padding-right: 12px !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
+.action-row button{
+    font-size:13px;
+    padding:6px;
 }
 
-/* NAVBAR FULL WIDTH */
-.navbar {
-    width: 100% !important;
+/* ---------- FILTERS ---------- */
+.filters{
+    overflow-x:auto;
+    flex-wrap:nowrap;
+    justify-content:flex-start;
+    padding-bottom:6px;
 }
 
-/* FIX GRID FOR MOVIES */
-.row {
-    margin-left: 0 !important;
-    margin-right: 0 !important;
+/* ---------- BOOKING MODAL MOBILE ---------- */
+.booking-modal{
+    align-items:flex-end;
 }
 
-.col-md-3,
-.col-md-4,
-.col-lg-3,
-.col-lg-4 {
-    flex: 0 0 100% !important;
-    max-width: 100% !important;
+.booking-card{
+    width:100%;
+    height:90%;
+    border-radius:20px 20px 0 0;
 }
 
-/* MOVIE CARD FULL WIDTH */
-.movie-card,
-.card {
-    width: 100% !important;
-    margin-bottom: 15px;
+/* ---------- SEATS GRID ---------- */
+.seat-container{
+    grid-template-columns:repeat(8,1fr);
+    gap:6px;
+}
+
+.seat{
+    width:28px;
+    height:28px;
+    font-size:10px;
+}
+
+/* ---------- SIDEBAR ---------- */
+#sidebar{
+    width:260px;
+}
+
+/* ---------- TICKET BOX ---------- */
+.ticket-box{
+    width:90vw;
+}
+
+/* ---------- CAROUSEL ARROWS HIDE ---------- */
+.carousel-control-prev,
+.carousel-control-next{
+    display:none;
+}
+
+}
+
+/* ===== EXTRA SMALL DEVICES: PHONES ===== */
+@media (max-width: 480px){
+
+/* ---------- MOVIE CARDS FULL WIDTH ---------- */
+.col-md-3{
+    width:100%;
+}
+
+.poster-wrapper{
+    height:260px;
+}
+
+/* ---------- SEATS GRID ---------- */
+.seat-container{
+    grid-template-columns:repeat(6,1fr);
+}
+
+.seat{
+    width:24px;
+    height:24px;
+    font-size:9px;
+}
+
+/* ---------- FILTERS SCROLL ---------- */
+.filters{
+    gap:6px;
+}
+
+/* ---------- BOOKING CARD SMALL ---------- */
+.booking-card{
+    height:92%;
+}
+
+/* ---------- ACTION ROW BUTTONS ---------- */
+.action-row button{
+    font-size:12px;
+}
+
+/* ---------- SIDEBAR ---------- */
+#sidebar{
+    width:220px;
 }
 
 }
